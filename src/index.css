@@ -1,0 +1,328 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  #wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    width: 1200px;
+    margin: 10px auto;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .txt {
+    font-size: x-large;
+    font-weight: bold;
+    margin: 8px;
+  }
+  
+  hr {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+  
+  .create-task {
+    margin-left: auto;
+    margin-right: 10px;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .create-task:hover {
+    background-color: #ddd;
+  }
+  
+  .state-of-task {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    width: 1000px;
+    margin-top: 20px;
+    align-self: center;
+  }
+  .state-of-task button {
+    flex: 1;
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, border-bottom-color 0.3s;
+  }
+  .state-of-task button:not(:last-child) {
+    border-right: 1px solid #ccc;
+  }
+  .state-of-task button:hover, .state-of-task button.active {
+    background-color: #ddd;
+    border-bottom: 3px solid #2196f3;
+  }
+  .state-of-task button.active {
+    background-color: #2196f3;
+    color: white;
+  }
+  .state-of-task button:focus {
+    outline: none;
+  }
+  
+  .radio-btn {
+    display: flex;
+    justify-self: baseline;
+    gap: 5px;
+  }
+  
+  .hide {
+    display: none !important;
+  }
+  
+  .modal-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
+  
+  .modal {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    margin: 0 20px;
+    position: relative;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #aaa;
+    transition: color 0.3s;
+  }
+  .close-btn:hover {
+    color: #f44336;
+  }
+  
+  .submit-btn {
+    width: 100px;
+    height: 35px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto 0;
+  }
+  .submit-btn:hover {
+    background-color: #45a049;
+  }
+  .submit-btn:active {
+    background-color: #3e8e41;
+  }
+  
+  input[type=text],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  input[type=text]:focus,
+  textarea:focus {
+    border-color: #2196f3;
+    outline: none;
+  }
+  
+  .checkbox-container,
+  .radio-btn {
+    margin: 10px 0;
+  }
+  
+  .checkbox-container input,
+  .radio-btn input {
+    margin-right: 10px;
+  }
+  
+  .allmain {
+    justify-self: center;
+    align-self: center;
+  }
+  
+  .all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+    margin-top: 25px;
+    border-radius: 12px;
+    background-color: #f5f5dc;
+    height: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: "Roboto", sans-serif;
+  }
+  .all:hover {
+    background-color: #eee8aa;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .task-dsp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 750px;
+    margin: 10px 0;
+    height: auto;
+    border-radius: 15px;
+    background-color: #00ffff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .task-dsp:hover {
+    background-color: #7fffd4;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  .task-dsp h3 {
+    margin: 0;
+    padding: 5px 0;
+    color: #2f4f4f;
+    font-family: "Lobster", cursive;
+  }
+  .task-dsp p {
+    margin: 5px 0;
+    padding: 5px 0;
+    color: #696969;
+    font-family: "Roboto", sans-serif;
+  }
+  .task-dsp button {
+    margin: 5px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4682b4;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .task-dsp button:hover {
+    background-color: #5f9ea0;
+  }
+  
+  .edit-btn {
+    width: 80px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  .edit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-btn {
+    width: 80px;
+    height: 30px;
+    background-color: #dc3545 !important;
+    color: white;
+    border: none;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .delete-btn:hover {
+    background-color: #c82333 !important;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      width: 95%;
+      height: auto;
+    }
+    .state-of-task {
+      flex-direction: column;
+    }
+    .state-of-task button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .task-dsp {
+      width: 100%;
+      max-width: 100%;
+    }
+    .modal {
+      max-width: 90%;
+      padding: 10px;
+    }
+    .container,
+    .task-dsp {
+      border: none;
+    }
+    hr {
+      display: none;
+    }
+  }
+  @media (max-width: 480px) {
+    .txt {
+      font-size: large;
+    }
+    .create-task {
+      width: 80px;
+      height: 25px;
+    }
+    .state-of-task button {
+      font-size: 14px;
+    }
+    .container,
+    .task-dsp {
+      border: none;
+    }
+    hr {
+      display: none;
+    }
+  }/*# sourceMappingURL=app.css.map */
